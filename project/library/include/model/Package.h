@@ -1,8 +1,7 @@
 #ifndef PARCELLOCKERPROJECT_PACKAGE_H
 #define PARCELLOCKERPROJECT_PACKAGE_H
 
-#include "../../../../../../../../usr/include/c++/8/string"
-#include "../../../../../../../../usr/include/boost/uuid/uuid.hpp"
+#include <boost/uuid/uuid.hpp>
 #include "../packages/PackageType.h"
 #include "../typedefs.h"
 

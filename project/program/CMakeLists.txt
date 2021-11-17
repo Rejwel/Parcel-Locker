@@ -5,16 +5,17 @@ set(SOURCE_FILES src/main.cpp src/mainwindow.cpp include/mainwindow.h ui/mainwin
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+set(CMAKE_PREFIX_PATH $ENV{QTDIR})
+find_package(Qt6 COMPONENTS Widgets REQUIRED)
+find_package(Qt6Core REQUIRED)
+find_package(Qt6Widgets REQUIRED)
 
 add_executable(ParcelLockerSource ${SOURCE_FILES})
 
-find_package (Boost 1.60.0 COMPONENTS "unit_test_framework" REQUIRED)
+find_package (Boost 1.76.0 COMPONENTS "unit_test_framework" REQUIRED)
 include_directories(
         ${Boost_INCLUDE_DIRS}
 )
 
-target_link_libraries(ParcelLockerSource ParcelLockerLib Qt5::Widgets Qt5::Core ParcelLockerLib)
+target_link_libraries(ParcelLockerSource ParcelLockerLib Qt6::Widgets Qt6::Core ParcelLockerLib)
 target_include_directories(ParcelLockerSource PUBLIC include)

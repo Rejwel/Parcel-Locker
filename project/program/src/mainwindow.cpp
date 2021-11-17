@@ -1,10 +1,11 @@
 #include <QPushButton>
 #include <QStyle>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QLabel>
 #include <QPainter>
 #include <QInputDialog>
 #include <QDir>
+#include <string>
 #include <QResource>
 #include <QMessageBox>
 #include "mainwindow.h"
@@ -23,15 +24,17 @@ MainWindow::MainWindow(MainWindow *parentWindow) :
 
     // setting up width and height, centering window
     ui->setupUi(this);
-    this->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,this->size(),qApp->desktop()->availableGeometry()));
+
     this->setFixedSize(500,500);
 
     // setting up bg image for application
     // you need to specify full path to work
-    QPixmap bkgnd("/home/student/CLionProjects/project/project/program/images/background.png");
+    std::string stringPathToBackground = QCoreApplication::applicationDirPath().toStdString() + "/../../program/images/background.png";
+    QString PathToBackground = QString::fromStdString(stringPathToBackground);
+    QPixmap bkgnd(PathToBackground);
     bkgnd = bkgnd.scaled(this->size(), Qt::KeepAspectRatioByExpanding);
     QPalette palette;
-    palette.setBrush(QPalette::Background, bkgnd);
+    palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
 
 
@@ -102,7 +105,7 @@ void MainWindow::handleButtonOrder() {
     orderDialog = new OrderDialog(this, parcelLockerManager, orderManager, packageManager);
     orderDialog->setFixedSize(500,500);
     orderDialog->setStyleSheet("background:#262628; color:white;");
-    orderDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,orderDialog->size(),qApp->desktop()->availableGeometry()));
+    orderDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,orderDialog->size(),normalGeometry()));
     orderDialog->show();
 }
 
@@ -110,7 +113,7 @@ void MainWindow::handleButtonRegister() {
     registerDialog = new RegisterDialog(this, clientManager);
     registerDialog->setFixedSize(500,500);
     registerDialog->setStyleSheet("background:#262628; color:white;");
-    registerDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,registerDialog->size(),qApp->desktop()->availableGeometry()));
+    registerDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,registerDialog->size(),normalGeometry()));
     registerDialog->show();
 }
 
@@ -118,7 +121,7 @@ void MainWindow::handleButtonLogin() {
     loginDialog = new LoginDialog(this, clientManager);
     loginDialog->setFixedSize(500,500);
     loginDialog->setStyleSheet("background:#262628; color:white;");
-    loginDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,loginDialog->size(),qApp->desktop()->availableGeometry()));
+    loginDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,loginDialog->size(),normalGeometry()));
     loginDialog->show();
 }
 
@@ -126,7 +129,7 @@ void MainWindow::handleButtonAdminPanel() {
     adminDialog = new AdminDialog(this, clientManager, parcelLockerManager);
     adminDialog->setFixedSize(500,500);
     adminDialog->setStyleSheet("background:#262628; color:white;");
-    adminDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,adminDialog->size(),qApp->desktop()->availableGeometry()));
+    adminDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,adminDialog->size(),normalGeometry()));
     adminDialog->show();
 }
 
@@ -134,7 +137,7 @@ void MainWindow::handleButtonCheckOrder() {
     checkOrderDialog = new CheckOrders(this, orderManager);
     checkOrderDialog->setFixedSize(500,500);
     checkOrderDialog->setStyleSheet("background:#262628; color:white;");
-    checkOrderDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,checkOrderDialog->size(),qApp->desktop()->availableGeometry()));
+    checkOrderDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,checkOrderDialog->size(),normalGeometry()));
     checkOrderDialog->show();
 }
 

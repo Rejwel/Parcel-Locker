@@ -1,5 +1,3 @@
-// You may need to build the project (run Qt uic code generator) to get "ui_LoginDialog.h" resolved
-
 #include <predicates/PredicateByLogin.h>
 #include <QMessageBox>
 #include <mainwindow.h>

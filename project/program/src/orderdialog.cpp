@@ -1,5 +1,4 @@
 #include <QLabel>
-#include <QDesktopWidget>
 #include <QStyle>
 #include <QInputDialog>
 #include <QDir>
@@ -71,6 +70,6 @@ void OrderDialog::onButtonClickedOpenParcelLockerDialog() {
     showLockersDialog = new ShowLockersDialog(parentWindow, parcelLockerManager);
     showLockersDialog->setFixedSize(500,500);
     showLockersDialog->setStyleSheet("background:#262628; color:white;");
-    showLockersDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,showLockersDialog->size(),qApp->desktop()->availableGeometry()));
+    showLockersDialog->setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,showLockersDialog->size(),normalGeometry()));
     showLockersDialog->show();
 }

@@ -11,8 +11,7 @@ add_library(ParcelLockerLib ${SOURCE_FILES})
 target_include_directories(ParcelLockerLib PUBLIC include)
 enable_testing()
 
-find_package (Boost 1.60.0 COMPONENTS "unit_test_framework" REQUIRED)
-#find_package(nlohmann_json 3.2.0 REQUIRED)
+find_package (Boost 1.76.0 COMPONENTS "unit_test_framework" REQUIRED)
 
 include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/include
